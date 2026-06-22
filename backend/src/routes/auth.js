@@ -3,6 +3,10 @@ import { supabase } from '../config/supabase.js'
 
 const router = Router()
 
+router.get('/', (req, res) => {
+  res.json({ endpoints: ['POST /login', 'POST /logout', 'GET /me'] })
+})
+
 router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body

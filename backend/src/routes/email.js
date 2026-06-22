@@ -3,6 +3,10 @@ import nodemailer from 'nodemailer'
 
 const router = Router()
 
+router.get('/', (req, res) => {
+  res.json({ endpoints: ['POST /send-welcome'] })
+})
+
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_PORT),
