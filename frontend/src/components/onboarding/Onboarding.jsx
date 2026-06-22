@@ -158,7 +158,7 @@ function Onboarding() {
         .map(([name, v]) => ({ name, cost: v.cost }))
 
       try {
-        await fetch('http://localhost:3000/api/email/send-welcome', {
+        await fetch('https://Mahi7801-Devna-Engineers-HRMS-Portal.hf.space/api/email/send-welcome', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
