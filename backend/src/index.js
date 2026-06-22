@@ -4,8 +4,13 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import rateLimit from 'express-rate-limit'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 import { errorHandler } from './middleware/errorHandler.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 import authRoutes from './routes/auth.js'
 import employeeRoutes from './routes/employees.js'
@@ -41,6 +46,9 @@ const limiter = rateLimit({
 })
 app.use(limiter)
 
+const frontendDist = path.join(__dirname, '..', 'public')
+app.use(express.static(frontendDist))
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
@@ -62,6 +70,10 @@ app.use('/api/shifts', shiftRoutes)
 app.use('/api/overtime', overtimeRoutes)
 app.use('/api/employee-sessions', employeeSessionRoutes)
 app.use('/api/email', emailRoutes)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendDist, 'index.html'))
+})
 
 app.use(errorHandler)
 

@@ -123,7 +123,7 @@ router.post('/send-welcome', async (req, res) => {
             <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 16px; margin: 20px 0;">
               <h3 style="color: #0369a1; margin: 0 0 8px;">Login Instructions</h3>
               <p style="color: #475569; margin: 0; line-height: 1.6;">
-                <strong>Portal URL:</strong> <a href="http://localhost:5173/login" style="color: #2563eb;">http://localhost:5173/login</a><br>
+                <strong>Portal URL:</strong> <a href="https://Mahi7801-Devna-Engineers-HRMS-Portal.hf.space/login" style="color: #2563eb;">https://Mahi7801-Devna-Engineers-HRMS-Portal.hf.space/login</a><br>
                 <strong>Email:</strong> ${email}<br>
                 <strong>Password:</strong> ${password || '123456'}
               </p>
